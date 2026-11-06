@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food & Meal Resources — Berkeley City College</title>
+
+  <!-- Typography: Newsreader (Serif), Geist (Sans), Geist Mono (Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Soft Warm Canvas */
+      --bg-page: #FBF9F5;
+      --card-bg: #FFFEFC;
+
+      /* Gentle & High Contrast Ink */
+      --ink-primary: #1C1E21;
+      --ink-secondary: #383D43;
+      --ink-muted: #6C727A;
+      --border-line: #E8E5DD;
+
+      /* Official Civic Green - Frame Tokens */
+      --calfresh-green-bold: #1B5E20;
+      --calfresh-frame-border: #2D6A4F;
+      --calfresh-frame-bg: #F3F8F5;
+
+      /* Category Pill Tokens (Solid Rich Background + Crisp Pure White Text) */
+      --pill-text-color: #FFFFFF;
+      --pill-coord-bg: #2C5270;   /* Slate Navy: Benefit Portals & Logistics */
+      --pill-urgent-bg: #A34338;  /* Terra Cotta: Hot Meals & Drop-ins */
+      --pill-relief-bg: #276345;  /* Forest Pine: Free Grocery & Produce Markets */
+      --pill-afford-bg: #21617A;  /* Mineral Teal: Comprehensive Hubs & EBT Matching */
+      --pill-rights-bg: #754E33;  /* Warm Umber: Specialized & Immigrant Services */
+
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: 'Geist Mono', ui-monospace, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+      padding: 68px 24px 140px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 670px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Motion */
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-enter {
+      animation: enter 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .delay-0 { animation-delay: 0ms; }
+    .delay-1 { animation-delay: 45ms; }
+    .delay-2 { animation-delay: 90ms; }
+    .delay-3 { animation-delay: 135ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-enter {
+        animation: none !important;
+      }
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 1.5px solid var(--ink-primary);
+      outline-offset: 3px;
+    }
+
+    .nav-back {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      margin-bottom: 28px;
+      transition: color 150ms ease;
+    }
+    .nav-back:hover {
+      color: var(--ink-primary);
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      color: var(--ink-primary);
+      margin-bottom: 28px;
+    }
+
+    /* ========================================================= */
+    /* ENHANCED CIVIC CALFRESH SECTION (ALL-AROUND GREEN BORDER FRAME) */
+    /* ========================================================= */
+    .calfresh-panel {
+      background-color: var(--calfresh-frame-bg);
+      border: 2px solid var(--calfresh-frame-border);
+      border-radius: 6px;
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(45, 106, 79, 0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .calfresh-header-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid rgba(45, 106, 79, 0.25);
+    }
+
+    .calfresh-title-block {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .calfresh-label {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--calfresh-green-bold);
+    }
+
+    .calfresh-sublabel {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .calfresh-headline {
+      font-size: 15px;
+      line-height: 1.68;
+      color: var(--ink-secondary);
+    }
+
+    .calfresh-headline strong {
+      color: var(--ink-primary);
+      font-weight: 700;
+      font-size: 15.5px;
+    }
+
+    .calfresh-instructions {
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(45, 106, 79, 0.18);
+      border-radius: 4px;
+      padding: 14px 16px;
+      font-size: 13.5px;
+      line-height: 1.66;
+      color: var(--ink-secondary);
+    }
+
+    .calfresh-instructions strong {
+      color: var(--ink-primary);
+      font-weight: 600;
+    }
+
+    .calfresh-instructions a {
+      color: var(--ink-primary);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .calfresh-meta-line {
+      display: flex;
+      gap: 22px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-muted);
+      flex-wrap: wrap;
+    }
+
+    .calfresh-meta-line strong {
+      color: var(--ink-primary);
+      font-weight: 500;
+    }
+
+    /* General Locator Notice Panel */
+    .locator-panel {
+      background-color: #F8F9FA;
+      border: 1px solid #E2E5E8;
+      border-left: 4px solid #4B5563;
+      border-radius: 6px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+
+    .locator-panel strong {
+      color: var(--ink-primary);
+    }
+
+    .locator-panel a {
+      color: var(--ink-primary);
+      text-decoration: underline;
+      font-weight: 500;
+      text-underline-offset: 2.5px;
+    }
+
+    /* Secondary Official Note */
+    .official-note {
+      background-color: #F4F1EA;
+      border: 1px solid #E4E0D6;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+      margin-bottom: 34px;
+    }
+
+    .official-note a {
+      color: var(--ink-primary);
+      text-decoration: underline;
+      font-weight: 500;
+      text-underline-offset: 2.5px;
+    }
+
+    /* Table of Contents */
+    .toc-card {
+      background: #F7F5EE;
+      border: 1px solid var(--border-line);
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin-bottom: 40px;
+    }
+
+    .toc-header {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--ink-muted);
+      margin-bottom: 14px;
+      border-bottom: 1px solid #E4E0D6;
+      padding-bottom: 6px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .toc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13.5px;
+    }
+
+    .toc-link {
+      color: var(--ink-secondary);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .toc-link:hover {
+      color: var(--ink-primary);
+      text-decoration: underline;
+    }
+
+    .toc-item-primary {
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .toc-item-sub {
+      padding-left: 14px;
+    }
+
+    .toc-dots {
+      flex: 1;
+      border-bottom: 1px dotted #D0CCC1;
+      margin: 0 10px;
+      transform: translateY(-3px);
+    }
+
+    .toc-page {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    /* Separators */
+    .section-divider {
+      height: 1px;
+      background-color: var(--border-line);
+      margin: 40px 0;
+      border: none;
+    }
+
+    .section-header-block {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--ink-muted);
+      font-weight: 500;
+    }
+
+    .section-subtitle-text {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      margin-top: 4px;
+      line-height: 1.55;
+    }
+
+    /* Resource Cards */
+    .resource-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .resource-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-line);
+      border-radius: 6px;
+      padding: 22px 22px 20px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+      transition: all 180ms ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .resource-card:hover {
+      border-color: #BDB9AC;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.035);
+      transform: translateY(-1px);
+    }
+
+    .row-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .action-group-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Map Button */
+    .map-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: #383D43;
+      background: #F4F1EA;
+      border: 1px solid #DCD8CD;
+      padding: 3px 8px 3px 7px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+    }
+
+    .map-btn .map-emoji {
+      font-size: 12px;
+      line-height: 1;
+      display: inline-block;
+      transform: translateY(-0.5px);
+    }
+
+    .map-btn:hover {
+      background: #EBE6DB;
+      color: #1C1E21;
+      border-color: #BEB7A8;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      transform: translateY(-0.5px);
+    }
+
+    /* Category Inverted Satin Pills */
+    .type-pill {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 2.5px 9px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      color: var(--pill-text-color) !important;
+      border: none;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .pill-coord  { background-color: var(--pill-coord-bg); }
+    .pill-urgent { background-color: var(--pill-urgent-bg); }
+    .pill-relief { background-color: var(--pill-relief-bg); }
+    .pill-afford { background-color: var(--pill-afford-bg); }
+    .pill-rights { background-color: var(--pill-rights-bg); }
+
+    .resource-title {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink-primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .resource-title:hover {
+      text-decoration: underline;
+    }
+
+    .arrow-icon {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      transition: transform 160ms ease;
+    }
+
+    .resource-card:hover .arrow-icon {
+      transform: translate(2px, -2px);
+    }
+
+    .badge-subtle {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      background: #F1EFE8;
+      padding: 2px 7px;
+      border-radius: 9999px;
+    }
+
+    .resource-desc {
+      font-size: 14px;
+      color: var(--ink-secondary);
+      line-height: 1.66;
+    }
+
+    .frontline-box {
+      margin-top: 4px;
+      padding-top: 12px;
+      border-top: 1px solid #F1EFEA;
+      font-size: 13px;
+      color: var(--ink-secondary);
+      display: flex;
+      gap: 8px;
+      line-height: 1.58;
+    }
+
+    .frontline-tag {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-primary);
+      flex-shrink: 0;
+    }
+
+    .card-meta-line {
+      display: flex;
+      gap: 20px;
+      margin-top: 2px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      flex-wrap: wrap;
+    }
+
+    .card-meta-line span strong {
+      color: var(--ink-primary);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+
+    <!-- Navigation -->
+    <a href="/" class="nav-back animate-enter delay-0">← Back to Hub</a>
+
+    <!-- Header Section -->
+    <header class="animate-enter delay-1">
+      <div class="eyebrow">Berkeley City College · Basic Needs Center</div>
+      <h1>Food & Nutrition Resources</h1>
+    </header>
+
+    <!-- 1. Dedicated CalFresh Section: Fully Enclosed Solid Green Border Frame (2px), Elevated Contrast -->
+    <section class="calfresh-panel animate-enter delay-1" id="calfresh-section">
+      <div class="calfresh-header-line">
+        <div class="calfresh-title-block">
+          <span class="calfresh-label">CalFresh Application</span>
+          <span class="calfresh-sublabel">· Supplemental Nutrition Assistance Program (SNAP)</span>
+        </div>
+      </div>
+
+      <p class="calfresh-headline">
+        <strong>Apply Now: CalFresh</strong> — Monthly food assistance benefits to purchase groceries and fresh produce for eligible students and households.
+      </p>
+
+      <div class="calfresh-instructions">
+        Visit the <strong>Berkeley City College Basic Needs Center</strong> during open hours for direct, one-on-one assistance with your application, eligibility evaluation, and required verification documents. Online applications can also be submitted directly through <a href="https://benefitscal.com/" target="_blank" rel="noopener">BenefitsCal.com</a>.
+      </div>
+
+      <div class="calfresh-meta-line">
+        <span><strong>Campus Support:</strong> BCC Basic Needs Center</span>
+        <span><strong>State Portal:</strong> BenefitsCal.com</span>
+        <span><strong>Coverage:</strong> Fresh Grocery & Market Matching</span>
+      </div>
+    </section>
+
+    <!-- 2. County Locator & Search Notice -->
+    <div class="locator-panel animate-enter delay-1">
+      To search for the pantry or distribution site closest to your current location across Alameda County, visit the ACCFB search tool at <a href="https://www.foodnow.net/find-a-food-pantry/" target="_blank" rel="noopener">foodnow.net/find-a-food-pantry/</a> to find groceries, cold meal packages, hot meal services, and CalFresh enrollment hubs.
+    </div>
+
+    <!-- Secondary Official Note -->
+    <div class="official-note animate-enter delay-2">
+      <strong>Note:</strong> If you are seeking immediate on-campus provisions, visit the <a href="https://www.berkeleycitycollege.edu/basic-needs" target="_blank" rel="noopener">BCC Basic Needs Center Pantry</a> during official operating hours. All off-campus community resources listed below operate independently.
+    </div>
+
+    <!-- 3. Table of Contents Section -->
+    <nav class="toc-card animate-enter delay-2" aria-label="Table of Contents">
+      <div class="toc-header">Table of Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item toc-item-primary">
+          <a href="#online-benefits" class="toc-link">Online Resources & Benefit Support</a>
+          <span class="toc-dots"></span>
+          <span class="toc-page">1</span>
+        </li>
+        <li class="toc-item toc-item-primary" style="margin-top:3px;">
+          <a href="#tier-1-berkeley" class="toc-link">Tier 1: Berkeley Core Local Hubs</a>
+          <span class="toc-dots"></span>
+          <span class="toc-page">2</span>
+        </li>
+        <li class="toc-item toc-item-primary" style="margin-top:3px;">
+          <a href="#tier-2-emeryville-albany" class="toc-link">Tier 2: Emeryville & Albany Hubs</a>
+          <span class="toc-dots"></span>
+          <span class="toc-page">5</span>
+        </li>
+        <li class="toc-item toc-item-primary" style="margin-top:3px;">
+          <a href="#tier-3-oakland" class="toc-link">Tier 3: Oakland Core Hubs</a>
+          <span class="toc-dots"></span>
+          <span class="toc-page">6</span>
+        </li>
+        <li class="toc-item toc-item-primary" style="margin-top:3px;">
+          <a href="#regional-alameda-sanleandro" class="toc-link">Regional Hubs (Alameda Island & San Leandro)</a>
+          <span class="toc-dots"></span>
+          <span class="toc-page">8</span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 1: ONLINE RESOURCES & BENEFIT SUPPORT -->
+    <!-- ========================================================= -->
+    <section id="online-benefits" class="animate-enter delay-3">
+      <div class="section-header-block">
+        <span class="section-title">Online Resources & Benefit Support</span>
+        <p class="section-subtitle-text">Official regional locators, benefit match programs, and digital state nutrition application portals.</p>
+      </div>
+
+      <div class="resource-list">
+
+        <!-- Food Now -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-coord">County Directory</span>
+              <a href="https://www.foodnow.net/find-a-food-pantry/" target="_blank" rel="noopener" class="resource-title">
+                Food Now (ACCFB Online Food Locator System)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <span class="badge-subtle">Online Platform</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            24/7 search tool for free food pantries, hot meal distributions, and mobile pantry trucks open on the current day across Alameda County.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>The primary underlying directory run by the Alameda County Community Food Bank (ACCFB); enter your ZIP code to filter the nearest active distribution sites by operating day.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Platform:</strong> foodnow.net</span>
+            <span><strong>Coverage:</strong> All Alameda County Cities</span>
+          </div>
+        </article>
+
+        <!-- Market Match -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-afford">EBT Produce Match</span>
+              <a href="https://marketmatch.org/" target="_blank" rel="noopener" class="resource-title">
+                Market Match (California Farmers' Market EBT Match Program)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <span class="badge-subtle">Online Directory</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Matches CalFresh EBT benefits dollar-for-dollar when purchasing fresh fruits and vegetables (typically provides a $10 free produce voucher match for spending $10).
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">How to Use:</span>
+            <span>Swipe your CalFresh EBT card at the information booth of any of Berkeley's three farmers' markets (Downtown, North, South) to receive bonus market tokens/vouchers.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Directory:</strong> marketmatch.org</span>
+            <span><strong>Benefit:</strong> Up to $10 produce match per visit</span>
+          </div>
+        </article>
+
+        <!-- California EBT Locator -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-coord">State Registry</span>
+              <a href="https://www.ebt.ca.gov/locator/" target="_blank" rel="noopener" class="resource-title">
+                California EBT Retailer Locator
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <span class="badge-subtle">Online Tool</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Official state search tool for locating authorized grocery stores, corner markets, supermarkets, and direct farm stands that accept CalFresh EBT card payments.
+          </p>
+          <div class="card-meta-line">
+            <span><strong>Portal:</strong> ebt.ca.gov/locator</span>
+            <span><strong>Scope:</strong> Statewide Retail Directory</span>
+          </div>
+        </article>
+
+        <!-- WIC Program -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Special Supplemental</span>
+              <a href="https://myfamily.wic.ca.gov/" target="_blank" rel="noopener" class="resource-title">
+                California WIC Program (Women, Infants, and Children)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/search/?api=1&query=1947+Center+St,+Berkeley,+CA+94704" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Online & Center St</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Provides supplemental nutritious food packages, nutrition education, and farmers' market nutrition coupons for low-income pregnant women, postpartum mothers, and families with infants or children under age five.
+          </p>
+          <div class="card-meta-line">
+            <span><strong>Online Portal:</strong> myfamily.wic.ca.gov</span>
+            <span><strong>Berkeley Local Office:</strong> 1947 Center St, Berkeley, CA</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Structural Divider -->
+    <hr class="section-divider">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 2: TIER 1 - BERKELEY CORE LOCAL HUBS -->
+    <!-- ========================================================= -->
+    <section id="tier-1-berkeley">
+      <div class="section-header-block">
+        <span class="section-title">Tier 1: Berkeley Core Local Hubs</span>
+        <p class="section-subtitle-text">Walk-in pantries, community dining rooms, grocery distribution hubs, and student-accessible provisions in Berkeley.</p>
+      </div>
+
+      <div class="resource-list">
+
+        <!-- Berkeley Food Network (BFN) Onsite Pantry -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Choice Pantry</span>
+              <a href="https://www.berkeleyfoodnetwork.org/" target="_blank" rel="noopener" class="resource-title">
+                Berkeley Food Network (BFN) Onsite Pantry
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Berkeley+Food+Network/@37.8691092,-122.2967497,17z/data=!4m14!1m7!3m6!1s0x8085794ae2abffff:0x440f62b4c68926f1!2sBerkeley+Food+Network!8m2!3d37.869105!4d-122.2941694!16s%2Fg%2F11h4cghynp!3m5!1s0x8085794ae2abffff:0x440f62b4c68926f1!8m2!3d37.869105!4d-122.2941694!16s%2Fg%2F11h4cghynp?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">West Berkeley</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            "Choice marketplace" model providing fresh produce, shelf-stable pantry items, dairy, and staples. Open Tuesdays & Thursdays, 11:00 AM – 6:00 PM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>No income verification or identification required; simple on-site registration form completed on the first visit; limited to once per week; please bring your own reusable grocery bags.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 1925 9th St, Berkeley, CA 94710</span>
+            <span><strong>Schedule:</strong> Tue & Thu, 11:00 AM – 6:00 PM</span>
+          </div>
+        </article>
+
+        <!-- Dorothy Day House (Berkeley Drop-In Center) -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">Hot Meals & Hygiene</span>
+              <a href="https://www.dorothydayhouse.org/" target="_blank" rel="noopener" class="resource-title">
+                Dorothy Day House (Berkeley Drop-In Center)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Dorothy+Day+House/@37.8701477,-122.274438,17z/data=!3m1!4b1!4m6!3m5!1s0x80857e995a3fffff:0xe91dbd8c78cdc221!8m2!3d37.8701435!4d-122.2718577!16s%2Fg%2F11f63y7j3j?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">1 Block from BCC</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Daily free breakfast (Monday – Saturday, 8:30 – 9:15 AM) and hot lunch (daily, 12:30 – 1:15 PM). Also provides access to showers, laundry, clothing, and basic hygiene essentials.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Located in Downtown Berkeley steps from the Downtown Berkeley BART station and BCC; walk-in queue with zero eligibility hurdles or paperwork required.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 1931 Center St, Berkeley, CA 94704</span>
+            <span><strong>Meals:</strong> Breakfast Mon–Sat 8:30 AM | Lunch Daily 12:30 PM</span>
+          </div>
+        </article>
+
+        <!-- The Hope Center (Insight Housing) -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">Community Dinner</span>
+              <a href="https://insighthousing.org/what-we-do/the-hope-center-berkeley/" target="_blank" rel="noopener" class="resource-title">
+                The Hope Center (Insight Housing)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Hope+Center/@37.872632,-122.2723999,17z/data=!3m1!4b1!4m6!3m5!1s0x80857fbd6eae7ad3:0xdf6d81dd42ce817d!8m2!3d37.8726278!4d-122.2698196!16s%2Fg%2F11tx67n6q2?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Downtown Berkeley</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free community hot dinners served Monday through Friday, starting at 3:00 PM. Dine-in or takeaway options available (please bring your own takeaway container).
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Services:</span>
+            <span>Serves as an integrated regional intake hub for shelter and transitional crisis assistance alongside meal distributions.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 2012 Berkeley Way, Berkeley, CA 94704</span>
+            <span><strong>Schedule:</strong> Mon–Fri starting at 3:00 PM</span>
+          </div>
+        </article>
+
+        <!-- Ecology Center - Berkeley Farmers' Markets -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-afford">Organic Produce</span>
+              <a href="https://ecologycenter.org/food-farming/berkeley-farmers-markets/" target="_blank" rel="noopener" class="resource-title">
+                Ecology Center — Berkeley Farmers' Markets
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <span class="badge-subtle">3 Market Sites</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Certified year-round farmers' markets offering fresh, California-grown organic produce. Accepts CalFresh EBT and matches transactions on-site via Market Match, alongside WIC Farmers’ Market Nutrition Program (FMNP) checks.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Three Locations & Hours:</span>
+            <span>
+              1. <strong>Downtown Berkeley:</strong> Center St @ MLK Jr. Way (Sat, 10:00 AM – 2:30 PM) 
+              <a href="https://www.google.com/maps/place/Downtown+Berkeley+Farmers'+Market/@37.8701852,-122.2739506,17z/data=!3m2!4b1!5s0x80857e9eacbaf82b:0x71414272a685c989!4m6!3m5!1s0x80857e9957debe9b:0xe4ba55873abe95ee!8m2!3d37.870181!4d-122.2713703!16s%2Fg%2F1q67drh0h?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style="text-decoration:underline;">[Map]</a><br>
+              2. <strong>North Berkeley:</strong> Shattuck Ave @ Vine St (Thu, 3:00 PM – 7:00 PM) 
+              <a href="https://www.google.com/maps/place/North+Berkeley+Farmers'+Market/@37.8813887,-122.2736527,17z/data=!4m10!1m2!2m1!1sBerkeley+Farmers'+Market!3m6!1s0x80857ea6ec5de3d1:0x4451f201e1f29464!8m2!3d37.8813887!4d-122.2692753!15sChhCZXJrZWxleSBGYXJtZXJzJyBNYXJrZXRaGSIXYmVya2VsZXkgZmFybWVycyBtYXJrZXSSAQ5mYXJtZXJzX21hcmtldJoBJENoZERTVWhOTUc5blMwVk1SMGR3WVhGa01uSTNSbkpCUlJBQuABAPoBBAgbECM!16s%2Fg%2F1pp2vjznw?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style="text-decoration:underline;">[Map]</a><br>
+              3. <strong>South Berkeley:</strong> Adeline St & 63rd St (Tue, 2:00 PM – 6:30 PM) 
+              <a href="https://www.google.com/maps/place/South+Berkeley+Farmers'+Market/@37.8475282,-122.2748151,17z/data=!3m1!4b1!4m6!3m5!1s0x80857e7a3ba592cf:0x39ee8691293e4a43!8m2!3d37.847524!4d-122.2722348!16s%2Fg%2F1pp2wzwkb?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style="text-decoration:underline;">[Map]</a>
+            </span>
+          </div>
+        </article>
+
+        <!-- Food Not Bombs -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">Hot Meals & Bakery</span>
+              <a href="https://eastbayfoodnotbombs.org/" target="_blank" rel="noopener" class="resource-title">
+                Food Not Bombs (East Bay Chapter)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/East+Bay+Food+Not+Bombs/@37.8350299,-122.2667313,17z/data=!4m14!1m7!3m6!1s0x80857c321ad30f25:0x8e826dae06341700!2sEast+Bay+Food+Not+Bombs!8m2!3d37.8350257!4d-122.264151!16s%2Fg%2F11bzv49j5l!3m5!1s0x80857c321ad30f25:0x8e826dae06341700!8m2!3d37.8350257!4d-122.264151!16s%2Fg%2F11bzv49j5l?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Telegraph Ave</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free hot vegetarian meals and fresh bakery items served daily at 3:00 PM near the corner of Telegraph Ave & Haste St.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Grassroots, non-governmental community distribution; zero paperwork, identification, or registration required; walk up and grab a meal.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> Telegraph Ave & Haste St, Berkeley, CA 94704</span>
+            <span><strong>Schedule:</strong> Daily at 3:00 PM</span>
+          </div>
+        </article>
+
+        <!-- City Team Ministries (First Presbyterian Berkeley) -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Bagged Produce</span>
+              <a href="https://www.cityteam.org/get-help/oakland" target="_blank" rel="noopener" class="resource-title">
+                City Team Ministries (First Presbyterian Berkeley)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/First+Presbyterian+Church+of+Berkeley/@37.8660327,-122.2632313,17z/data=!3m1!4b1!4m6!3m5!1s0x80857c28d7b01f33:0x312b7590d629620b!8m2!3d37.8660285!4d-122.260651!16s%2Fg%2F1thxwfsp?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Dana St</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free bagged fresh produce and staple grocery items distributed on the 1st and 3rd Saturday of each month, 10:00 AM – 11:15 AM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>First-time visitors must register with a telephone number and present any form of valid photo ID.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 2407 Dana St, Berkeley, CA 94704</span>
+            <span><strong>Schedule:</strong> 1st & 3rd Sat, 10:00 AM – 11:15 AM</span>
+          </div>
+        </article>
+
+        <!-- BTA Food Pantry -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Boxed Groceries</span>
+              <a href="https://www.growingleadersbayarea.com/food-pantry.html" target="_blank" rel="noopener" class="resource-title">
+                BTA Food Pantry (Growing Leaders & BFN Partner Site)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Derby+St+%26+Martin+Luther+King+Jr+Way,+Berkeley,+CA+94703/@37.8597649,-122.2742989,17z/data=!4m15!1m8!3m7!1s0x80857e86afea8af1:0xcfc624129279ce3f!2sDerby+St+%26+Martin+Luther+King+Jr+Way,+Berkeley,+CA+94703!3b1!8m2!3d37.8597607!4d-122.2717186!16s%2Fg%2F11h9wzm5y2!3m5!1s0x80857e86afea8af1:0xcfc624129279ce3f!8m2!3d37.8597607!4d-122.2717186!16s%2Fg%2F11h9wzm5y2?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">MLK Jr Way</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free boxed fresh produce and groceries distributed on the 2nd and 4th Wednesday of each month, 1:00 PM – 2:30 PM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Jointly operated by Growing Leaders in partnership with Berkeley Food Network; fully open to the broader community facing food insecurity.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 2701 Martin Luther King Jr Way (at Derby St), Berkeley, CA 94703</span>
+            <span><strong>Schedule:</strong> 2nd & 4th Wed, 1:00 PM – 2:30 PM</span>
+          </div>
+        </article>
+
+        <!-- Multicultural Institute -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-rights">Day-Labourer Support</span>
+              <a href="https://www.mionline.org/" target="_blank" rel="noopener" class="resource-title">
+                Multicultural Institute
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Multicultural+Institute+%E2%80%94+Berkeley/@37.8688165,-122.2995902,17z/data=!3m1!4b1!4m6!3m5!1s0x80857e2a4134eab9:0x63676e10a0b820e7!8m2!3d37.8688123!4d-122.2970099!16s%2Fg%2F1pp2vgf62?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">West Berkeley</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free grocery distributions alongside day-labourer workforce and employment support services (Wednesdays, 9:30 AM – 10:30 AM).
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Primarily assists immigrant day labourers, families, and low-income community members, offering basic labour-rights and social services navigation.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 1920 7th St, Berkeley, CA 94710</span>
+            <span><strong>Schedule:</strong> Wednesdays, 9:30 AM – 10:30 AM</span>
+          </div>
+        </article>
+
+        <!-- South Berkeley Senior Center -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-afford">Senior Groceries</span>
+              <a href="https://berkeleyca.gov/community-recreation/seniors/senior-centers/judge-henry-ramsey-jr-south-berkeley-senior-center" target="_blank" rel="noopener" class="resource-title">
+                South Berkeley Senior Center (BFN Community Site)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/South+Berkeley+Senior+Center/@37.8543717,-122.2755067,17z/data=!4m14!1m7!3m6!1s0x80857e7d96b5015d:0xc027313204d450f4!2sSouth+Berkeley+Senior+Center!8m2!3d37.8543675!4d-122.2729264!16s%2Fg%2F1tqyfqw2!3m5!1s0x80857e7d96b5015d:0xc027313204d450f4!8m2!3d37.8543675!4d-122.2729264!16s%2Fg%2F1tqyfqw2?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Ellis St</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free grocery and essentials distribution held on the 2nd Monday of each month, 2:00 PM – 3:00 PM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Requires completing a brief intake registration on the first visit; tailored primarily toward senior citizens and neighbouring local households.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 2939 Ellis St, Berkeley, CA 94703</span>
+            <span><strong>Schedule:</strong> 2nd Mon, 2:00 PM – 3:00 PM</span>
+          </div>
+        </article>
+
+        <!-- McGee Avenue Baptist Church -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">Cooked Meals</span>
+              <a href="https://www.mcgeeave.org/about" target="_blank" rel="noopener" class="resource-title">
+                McGee Avenue Baptist Church Food Program
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Mc+Gee+Avenue+Baptist+Church/@37.8571031,-122.2781051,17z/data=!3m1!4b1!4m6!3m5!1s0x80857e8636d8ad1b:0x3374a0af1c98ff8!8m2!3d37.8570989!4d-122.2755248!16s%2Fg%2F1tv3nxq5?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Stuart St</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free community cooked meals and grocery staples served on Mondays, Wednesdays, and Fridays, 12:00 PM – 1:00 PM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>First-come, first-served basis; visitors must bring their own bags.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 1640 Stuart St, Berkeley, CA 94703</span>
+            <span><strong>Schedule:</strong> Mon, Wed & Fri, 12:00 PM – 1:00 PM</span>
+          </div>
+        </article>
+
+        <!-- Women's Daytime Drop-In Center -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">Women & Families</span>
+              <a href="https://www.womensdropin.org/" target="_blank" rel="noopener" class="resource-title">
+                Women's Daytime Drop-In Center
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Women's+Daytime+Drop-In+Center/@37.8663813,-122.2867291,17z/data=!3m1!4b1!4m6!3m5!1s0x80857e94711d7e4b:0xca1f98f1024885ef!8m2!3d37.8663771!4d-122.2841488!16s%2Fg%2F1th5jpj6?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Acton St</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free breakfast (9:00 AM) and takeaway hot lunch (11:30 AM – 1:00 PM), with an on-site emergency grocery pantry.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Services strictly reserved for low-income or unhoused women and their dependent minor children.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 2218 Acton St, Berkeley, CA 94702</span>
+            <span><strong>Meals:</strong> Breakfast 9:00 AM | Lunch 11:30 AM – 1:00 PM</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Structural Divider -->
+    <hr class="section-divider">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 3: TIER 2 - EMERYVILLE & ALBANY HUBS -->
+    <!-- ========================================================= -->
+    <section id="tier-2-emeryville-albany">
+      <div class="section-header-block">
+        <span class="section-title">Tier 2: Emeryville & Albany Hubs</span>
+        <p class="section-subtitle-text">High-volume daily food markets, senior brown bag packages, and school cafeteria mobile distributions.</p>
+      </div>
+
+      <div class="resource-list">
+
+        <!-- ECAP -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Daily Groceries</span>
+              <a href="https://ecapprogram.org/" target="_blank" rel="noopener" class="resource-title">
+                ECAP (Emeryville Citizens Assistance Program)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Emeryville+Citizens+Assistance+Program+-+ECAP/@37.8274031,-122.2809109,17z/data=!4m14!1m7!3m6!1s0x80857e11b4f9c7f1:0x33e9b83728db8ccf!2sEmeryville+Citizens+Assistance+Program+-+ECAP!8m2!3d37.8273989!4d-122.2783306!16s%2Fg%2F11b6_80yjd!3m5!1s0x80857e11b4f9c7f1:0x33e9b83728db8ccf!8m2!3d37.8273989!4d-122.2783306!16s%2Fg%2F11b6_80yjd?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">San Pablo Ave</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Fresh vegetables and fruits, bread, frozen meats, packaged groceries, and household cleaning supplies (open Monday – Saturday, 12:00 PM – 4:00 PM).
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>One of the largest consistent daytime distribution centres in the East Bay, receiving routine surplus donations from local supermarkets; no advance appointment required.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 3610 San Pablo Ave, Emeryville, CA 94608</span>
+            <span><strong>Hours:</strong> Mon–Sat, 12:00 PM – 4:00 PM</span>
+          </div>
+        </article>
+
+        <!-- Albany High School Mobile Pantry -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Mobile Pantry</span>
+              <a href="https://www.berkeleyfoodnetwork.org/" target="_blank" rel="noopener" class="resource-title">
+                Albany High School Mobile Pantry (BFN Partner Site)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Oakland+International+High+School+-+Mobile+Pantry+-+Food+Distribution+Center/@37.8336756,-122.2635823,17z/data=!4m14!1m7!3m6!1s0x80857de3951aaaab:0x89179a677e1d0f3!2sOakland+International+High+School+-+Mobile+Pantry+-+Food+Distribution+Center!8m2!3d37.8336714!4d-122.261002!16s%2Fg%2F11jprslk0s!3m5!1s0x80857de3951aaaab:0x89179a677e1d0f3!8m2!3d37.8336714!4d-122.261002!16s%2Fg%2F11jprslk0s?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Albany Cafeteria</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free fresh produce and shelf-stable grocery packages distributed on the 1st and 3rd Friday of each month, 1:30 PM – 2:30 PM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Located in the school cafeteria, but open to the entire public; linked to the unified Berkeley Food Network registration system.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 603 Key Route Blvd (Cafeteria), Albany, CA 94706</span>
+            <span><strong>Schedule:</strong> 1st & 3rd Fri, 1:30 PM – 2:30 PM</span>
+          </div>
+        </article>
+
+        <!-- Mercy Brown Bag Program -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-afford">Senior Brown Bag</span>
+              <a href="https://mercybrownbag.org/" target="_blank" rel="noopener" class="resource-title">
+                Mercy Brown Bag Program (Emeryville Senior Center)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Mercy+Brown+Bag+Program+Warehouse/@37.7737148,-122.2375724,17z/data=!3m1!4b1!4m6!3m5!1s0x808f86f626b895bf:0x85e0e51e6f5f7a8e!8m2!3d37.7737106!4d-122.2349921!16s%2Fg%2F11dxq83t82?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Salem St</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Bi-weekly distribution of free fresh grocery bags ("Brown Bags") for elderly residents.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Eligibility restricted to low-income older adults (typically age 60+); prior online eligibility confirmation required.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 4321 Salem St, Emeryville, CA 94608</span>
+            <span><strong>Eligibility:</strong> Low-Income Seniors (60+)</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Structural Divider -->
+    <hr class="section-divider">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 4: TIER 3 - OAKLAND CORE HUBS -->
+    <!-- ========================================================= -->
+    <section id="tier-3-oakland">
+      <div class="section-header-block">
+        <span class="section-title">Tier 3: Oakland Core Hubs</span>
+        <p class="section-subtitle-text">Transit-corridor food banks, breakfast pantries, community dining rooms, and grassroots emergency parcels in Oakland.</p>
+      </div>
+
+      <div class="resource-list">
+
+        <!-- Manna from Heaven -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">Breakfast & Pantry</span>
+              <a href="https://www.foodnow.net/find-a-food-pantry/" target="_blank" rel="noopener" class="resource-title">
+                Manna from Heaven (Ephesian Baptist Church)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Ephesian+Baptist+Church/@29.9523241,-90.1020868,17z/data=!4m6!3m5!1s0x8620a5963e33c763:0xf40063e772a2b99!8m2!3d29.9523195!4d-90.0995065!16s%2Fg%2F1v1kq6mg?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Telegraph Corridor</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Breakfast distribution (Wednesdays, 6:00 AM – 8:00 AM) and emergency food pantry (Wednesdays, 9:30 AM – 1:30 PM & 5:00 PM – 7:00 PM; Fridays, 9:30 AM – 11:30 AM).
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Conveniently situated along the North Oakland/Telegraph transit corridor; multiple distribution shifts on Wednesdays cater to varied student and worker schedules.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 5316 Telegraph Ave, Oakland, CA 94609</span>
+            <span><strong>Schedule:</strong> Wed 6:00 AM (Breakfast) | Wed & Fri Pantry</span>
+          </div>
+        </article>
+
+        <!-- City Team Ministries - All Nations -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Fresh Food Boxes</span>
+              <a href="https://www.cityteam.org/get-help/oakland" target="_blank" rel="noopener" class="resource-title">
+                City Team Ministries — All Nations
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/5815+San+Pablo+Ave,+Oakland,+CA+94608/@37.8412986,-122.2859715,17z/data=!3m1!4b1!4m6!3m5!1s0x80857e68b8bf0b65:0x4dcbda80962ced0e!8m2!3d37.8412944!4d-122.2833912!16s%2Fg%2F11rp1zhgb6?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">San Pablo Ave</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free grocery and fresh food box distributions on the 1st and 3rd Tuesday of each month, 1:00 PM – 2:00 PM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Must present any valid ID and bring your own shopping bags; distributed on a first-come, first-served basis while supplies last.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 5815 San Pablo Ave, Oakland, CA 94608</span>
+            <span><strong>Schedule:</strong> 1st & 3rd Tue, 1:00 PM – 2:00 PM</span>
+          </div>
+        </article>
+
+        <!-- St. Mary's Center -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-afford">Senior & Family Pantry</span>
+              <a href="https://stmaryscenter.org/" target="_blank" rel="noopener" class="resource-title">
+                St. Mary's Center (Community Pantry & Senior Nutrition)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/St.+Mary's+Center/@37.8228591,-122.2796315,17z/data=!3m1!4b1!4m6!3m5!1s0x80857e1ad3898b11:0x533d39665fb67365!8m2!3d37.8228549!4d-122.2770512!16s%2Fg%2F1tplqk0v?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Brockhurst St</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Regular fresh produce food pantry for low-income families and older adults, weekday hot community meals, and emergency transitional shelter referrals.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Located on the border of West Oakland and Emeryville, serving as a longstanding safety-net cornerstone for decades; provides tailored nutritional care packages and accessible distribution pathways specifically for older adults (ages 55+).</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 925 Brockhurst St (near San Pablo Ave), Oakland, CA 94608</span>
+            <span><strong>Focus:</strong> Seniors 55+ & Low-Income Families</span>
+          </div>
+        </article>
+
+        <!-- St. Vincent de Paul Free Dining Room -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">Hot Takeaway Lunch</span>
+              <a href="https://www.svdp-alameda.org/what-we-do.html" target="_blank" rel="noopener" class="resource-title">
+                St. Vincent de Paul Free Dining Room
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/St.+Vincent+De+Paul+Dining+Room/@37.8134216,-122.2758747,17z/data=!3m1!4b1!4m6!3m5!1s0x808f80a91872a001:0x4704e88c583b8f2a!8m2!3d37.8134174!4d-122.2732944!16s%2Fg%2F11b6vv6cls?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">23rd St Hub</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Free takeaway hot lunches served Tuesday through Saturday, 10:45 AM – 12:45 PM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>High-volume curbside and walk-up window meal distribution; no eligibility or identity screening required.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 675 23rd St, Oakland, CA 94612</span>
+            <span><strong>Hours:</strong> Tue–Sat, 10:45 AM – 12:45 PM</span>
+          </div>
+        </article>
+
+        <!-- City Team Oakland -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">3 Daily Hot Meals</span>
+              <a href="https://www.cityteam.org/get-help/oakland" target="_blank" rel="noopener" class="resource-title">
+                City Team Oakland (Emergency Essentials & Meals)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/CityTeam+Oakland/@37.8003043,-122.2776073,17z/data=!3m1!4b1!4m6!3m5!1s0x808fc85c00000001:0xedeffb7e6dc4b63c!8m2!3d37.8003001!4d-122.275027!16s%2Fg%2F1wyc4ksc?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Washington St</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Hot meals served three times daily (Breakfast at 7:00 AM, Lunch at 12:00 PM, Dinner at 6:30 PM), alongside a walk-in emergency food and provisions desk.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Core transitional assistance and daily nutrition station for unhoused and low-income individuals; readily stocked with ready-to-eat and hot rations.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 722 Washington St, Oakland, CA 94607</span>
+            <span><strong>Hours:</strong> Breakfast 7:00 AM | Lunch 12:00 PM | Dinner 6:30 PM</span>
+          </div>
+        </article>
+
+        <!-- The East Oakland Collective -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-urgent">Deep East Hub</span>
+              <a href="https://eastoaklandcollective.org/" target="_blank" rel="noopener" class="resource-title">
+                The East Oakland Collective (EOC)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/East+Oakland+Collective/@37.766679,-122.170208,17z/data=!3m1!4b1!4m6!3m5!1s0x808f8fbe746a690b:0x21513041f8280c2d!8m2!3d37.7666748!4d-122.1676277!16s%2Fg%2F11jg5mxzh7?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">MacArthur Blvd</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Hot lunches served Mondays, Wednesdays, and Fridays at 12:00 PM; fresh groceries and provisions distributed Tuesdays and Thursdays at 11:00 AM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Grassroots community hub in Deep East Oakland offering food, bottled water, hygiene kits, and direct cold-weather supplies without strict screening.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 7800 MacArthur Blvd, Oakland, CA 94605</span>
+            <span><strong>Lunch:</strong> Mon, Wed, Fri 12:00 PM | <strong>Groceries:</strong> Tue, Thu 11:00 AM</span>
+          </div>
+        </article>
+
+        <!-- East Oakland Switchboard -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Daily Pantry Bags</span>
+              <a href="https://oaklandvoices.us/2018/01/22/profile-east-oakland-switchboard/" target="_blank" rel="noopener" class="resource-title">
+                East Oakland Switchboard
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/East+Oakland+Switchboard/@37.7623901,-122.1854176,17z/data=!3m1!4b1!4m6!3m5!1s0x808f85fb9f213a97:0x5592657bc3d64b9b!8m2!3d37.7623859!4d-122.1828373!16s%2Fg%2F11tzlz5wk?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">73rd Ave</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Emergency pantry bag distributions Monday through Friday, 10:00 AM – 4:00 PM (limited to once per week).
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Rare full-workweek daily walk-up intake window; does not require identification, ensuring barrier-free access.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 1909 73rd Ave, Oakland, CA 94621</span>
+            <span><strong>Hours:</strong> Mon–Fri, 10:00 AM – 4:00 PM</span>
+          </div>
+        </article>
+
+        <!-- ACCFB Headquarters & Dispatch -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-coord">County Central Depot</span>
+              <a href="https://www.accfb.org/about-us/contact/" target="_blank" rel="noopener" class="resource-title">
+                Alameda County Community Food Bank (ACCFB Headquarters & Dispatch)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Alameda+County+Community+Food+Bank/@37.741194,-122.2041873,17z/data=!3m1!4b1!4m6!3m5!1s0x808f85bf190b49e3:0x295c7cd819d376d8!8m2!3d37.7411898!4d-122.201607!16s%2Fg%2F1td8zc00?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Helpline & Dispatch</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            County-wide central food relief distribution depot and emergency dispatch helpline (Helpline: 510-635-3663 / Website: FoodNow.net).
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Acts primarily as a logistics hub for bulk redistribution; individual clients can call the hotline to connect with the nearest mobile distribution site or arrange emergency home meal parcels.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 7900 Edgewater Dr, Oakland, CA 94621</span>
+            <span><strong>Emergency Helpline:</strong> (510) 635-3663</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Structural Divider -->
+    <hr class="section-divider">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 5: REGIONAL HUBS (ALAMEDA ISLAND & SAN LEANDRO) -->
+    <!-- ========================================================= -->
+    <section id="regional-alameda-sanleandro">
+      <div class="section-header-block">
+        <span class="section-title">Regional Hubs (Alameda Island & San Leandro)</span>
+        <p class="section-subtitle-text">Dedicated island grocery marketplaces and south county comprehensive multi-service resource centers.</p>
+      </div>
+
+      <div class="resource-list">
+
+        <!-- Alameda Food Bank -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-relief">Choice Market</span>
+              <a href="https://www.alamedafoodbank.org/" target="_blank" rel="noopener" class="resource-title">
+                Alameda Food Bank (Main Distribution Center)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Alameda+Food+Bank/@37.7848884,-122.3017246,17z/data=!3m1!4b1!4m6!3m5!1s0x808f8128294ee59b:0x38ecdc1735948e4f!8m2!3d37.7848842!4d-122.2991443!16s%2Fg%2F1th63m8j?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">Alameda Island</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Large full-choice grocery distribution marketplace. Open Mondays & Fridays 10:00 AM – 4:00 PM; Wednesdays 10:00 AM – 7:00 PM.
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Residency Restriction:</span>
+            <span>Must reside, work, or attend school on Alameda Island (requires showing a local lease, utility bill, paystub, or student ID upon initial intake).</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 677 West Ranger Ave, Alameda, CA 94501</span>
+            <span><strong>Schedule:</strong> Mon & Fri 10am–4pm | Wed 10am–7pm</span>
+          </div>
+        </article>
+
+        <!-- Davis Street Family Resource Center -->
+        <article class="resource-card">
+          <div class="row-header">
+            <div class="title-group">
+              <span class="type-pill pill-afford">Comprehensive Hub</span>
+              <a href="https://davisstreet.org/basic-needs/food-pantry/" target="_blank" rel="noopener" class="resource-title">
+                Davis Street Family Resource Center (Emergency Food Pantry)
+                <span class="arrow-icon">↗</span>
+              </a>
+            </div>
+            <div class="action-group-right">
+              <a href="https://www.google.com/maps/place/Davis+Street+Community+Center/@37.7049974,-122.1562288,17z/data=!3m1!4b1!4m6!3m5!1s0x808f8fe0c8ece751:0x1949d03904f5f0d5!8m2!3d37.7049932!4d-122.1536485!16s%2Fg%2F11r4s3bwxg?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="map-btn" title="Open in Google Maps">
+                <span class="map-emoji">🗺️</span>
+                <span>Map ↗</span>
+              </a>
+              <span class="badge-subtle">San Leandro BART</span>
+            </div>
+          </div>
+          <p class="resource-desc">
+            Distribution of free fresh vegetables, fruits, staple groceries, and frozen items (open Monday through Thursday, 10:00 AM – 5:00 PM).
+          </p>
+          <div class="frontline-box">
+            <span class="frontline-tag">Intake Guide:</span>
+            <span>Located adjacent to the San Leandro BART station, serving as the central comprehensive social safety net hub for Central and South Alameda County; beyond regular food pick-ups, it offers on-site clothing assistance, affordable primary care clinic navigation, and utility bill assistance (HEAP) application support.</span>
+          </div>
+          <div class="card-meta-line">
+            <span><strong>Address:</strong> 3081 Teagarden St, San Leandro, CA 94577</span>
+            <span><strong>Schedule:</strong> Mon–Thu, 10:00 AM – 5:00 PM</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
